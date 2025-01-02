@@ -9,9 +9,12 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/shorten", {
-        longUrl,
-      });
+      const response = await axios.post(
+        "https://url-shortner-qurd.onrender.com/shorten",
+        {
+          longUrl,
+        }
+      );
       setShortUrl(response.data.shortUrl);
     } catch (error) {
       console.error("Error shortening the URL: ", error);
