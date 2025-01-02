@@ -1,5 +1,4 @@
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
 const express = require("express");
 const shortid = require("shortid");
 const mongoose = require("mongoose");
@@ -37,7 +36,7 @@ app.post("/shorten", async (req, res) => {
 
   try {
     await newUrl.save();
-    res.json({ shortUrl: `http://localhost:5000/${shortUrl}` });
+    res.json({ shortUrl: `${process.env.BACKEND_URL}/${shortUrl}` });
   } catch (error) {
     res.status(500).json({ message: "Error while saving the URL." });
   }
